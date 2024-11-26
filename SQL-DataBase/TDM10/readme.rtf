@@ -1,0 +1,125 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Hamza NADIFI\
+Groupe:3\
+\
+Exercice1:\
+1. Mod\'e9lisation logique des tables (entit\'e9s):\
+\
+-Lyc\'e9e(numLycee\{id\},ville)\
+-Lyc\'e9en(numLyc\{id\})\
+-Visite(numVisite\{id\},titre,dateV,heureDeb,heureFin)\
+-Intervention(numInter\{id\},ordrePass,duree,salle)\
+-Etudiant(numEtu\{id\})\
+-UE(numUE\{id\},titre)\
+-Enseignant(numEns\{id\})\
+-Categorie(numCat\{id\},nom)\
+-Personne(numPers\{id\},nom,prenom,mail)\
+\
+2.Les relations qui modifieront les cl\'e9s primaires d\'e9coulant des identifiants des\
+entit\'e9s,ainsi que les cl\'e9s \'e9trang\'e8res:\
+(les compositions: les cl\'e9s primaires de l'entit\'e9 forte integrent la cl\'e9 primaire de l'entit\'e9 faible )\
+Visite(composition) 1--contenir--1..* Intervention\
+--->Intervention(numInter\{id\},ordrePass,duree,salle,#numVisitie\{id\})\
+\
+# Remarque: #num\{id\} : cl\'e9 primaire d'une entit\'e9 faible ayant int\'e9gr\'e9 la cl\'e9 primaire d'une entit\'e9 forte, d\'e9coulant d'une composition.\
+\
+3.ordre ad\'e9quat pour la r\'e9alisation de transformations de relations en tables:\
+D'abord les relations contenant une composition, ensuite les autres.\
+\
+4. Relations-Associations:\
+Visite(composition) 1--contenir--1..* Intervention\
+R1*c:\
+Intervention(numInter\{id\},ordrePass,duree,salle,#numVisitie\{id\})\
+\
+\
+Lyc\'e9e 1--etre inscrit--* Lyc\'e9en\
+R1*:Lyc\'e9en(numLyc\{id\},#numLycee)\
+\
+Lyc\'e9e 1--organiser dans--* Visite\
+R1*:Visite(numVisitie\{id\},titre,dateV,heureDeb,heureFin,#numLycee)\
+\
+Enseignant 1--avoir responsabilit\'e9--* Visite\
+R1*:Visite(numVisitie\{id\},titre,dateV,heureDeb,heureFin,#numLycee,#numEns)\
+\
+Visite *-----*Lyc\'e9en\
+R**p:Inscription(#numLyc,#numVisite)\
+\
+Lyc\'e9en 0..1--etre lyc\'e9en avec ou sans composition--1 Personne\
+R011:Lyc\'e9en(numLyc\{id\},#numLycee,#numPers)\
+\
+Enseignant 0..1--etre enseignant avec ou sans composition--1 Personne\
+R011:Enseignant(numEns\{id\},#numPers)\
+\
+Intervention *--pr\'e9senter--1 Etudiant\
+R1*:Intervention(numInter\{id\},ordrePass,duree,salle,#numVisitie\{id\},#numEtu)\
+\
+Etudiant 0..1--etre etudiant avec ou sans composition--1 Personne\
+R011:Etudiant(numEtu\{id\},#numPers)\
+\
+Intervention *--concerner--1 UE\
+R1*:Intervention(numInter\{id\},ordrePass,duree,salle,#numVisitie\{id\},#numEtu,#numUE)\
+\
+Etudiant *--suivre--* UE\
+R**:SuivreUE(#numEtu,#numUE)\
+\
+UE *--appartenir--1 Categorie\
+R1*:UE(numUE\{id\},titre,#numCat)\
+\
+UE *--participer \'e0--* Enseignant\
+R**:ParticiperUE(#numUE,#numEns)\
+\
+\
+--Mod\'e8le final:\
+\
+Lyc\'e9e(numLycee\{id\},ville)\
+Categorie(numCat\{id\},nom)\
+Personne(numPers\{id\},nom,prenom,mail)\
+Visite(numVisite\{id\},titre,dateV,heureDeb,heureFin,#numLycee,#numEns)\
+Inscription(#numLyc,#numVisite)\
+Lyc\'e9en(numLyc\{id\},#numLycee,#numPers)\
+Enseignant(numEns\{id\},#numPers)\
+Etudiant(numEtu\{id\},#numPers)\
+Intervention(numInter\{id\},ordrePass,duree,salle,#numVisite\{id\},#numEtu,#numUE)\
+SuivreUE(#numEtu,#numUE)\
+UE(numUE\{id\},titre,#numCat)\
+ParticiperUE(#numUE,#numEns)\
+\
+\
+\
+Exercice2:\
+Cr\'e9ation SQL, (fichier Tables.sql)\
+Ordre de cr\'e9ation:\
+--D'abord les tables sans cl\'e9s etrang\'e8res.\
+\
+Lyc\'e9e(numLyc\{id\},ville)\
+Categorie(numCat\{id\},nom)\
+Personne(numPers\{id\},nom,prenom,mail)\
+\
+--Puis les tables avec cl\'e9s \'e9trang\'e8res des tables qui existent d\'e9ja.\
+\
+UE(numUE\{id\},titre,#numCat) \
+Enseignant(numEns\{id\},#numPers)\
+Etudiant(numEtu\{id\},#numPers)\
+Lyc\'e9en(numLyc\{id\},#numLycee,#numPers)\
+\
+--Ensuite les tables avec cl\'e9s \'e9trang\'e8res des tables qui ont d\'e9ja des cl\'e9s \'e9trang\'e8res.\
+\
+ParticiperUE(#numUE,#numEns)\
+SuivreUE(#numEtu,#numUE)\
+Visite(numVisitie\{id\},titre,dateV,heureDeb,heureFin,#numLycee,#numEns)\
+\
+--Derni\'e8res tables, avec cl\'e9s \'e9trang\'e8res des tables au-dessus.\
+\
+Inscription(#numLyc,#numVisite)\
+Intervention(numInter\{id\},ordrePass,duree,salle,#numVisitie\{id\},#numEtu,#numUE)\
+\
+\
+Exercice3:\
+--requ\'eates d\'92insertion permettant de d\'e9crire deux visites, fichier( Exercice3.sql)\
+}

@@ -1,0 +1,59 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\froman\fcharset0 TimesNewRomanPSMT;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red251\green0\blue7;\red255\green255\blue255;
+\red16\green123\blue13;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c0\c0;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c0\c54118\c5490;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs37\fsmilli18667 \cf2 \expnd0\expndtw0\kerning0
+Exercice 1 
+\f1\b0\fs24 \
+
+\f0\b\fs37\fsmilli18667 Q1.1 Premi\'e8re mod\'e9lisation logique des entit\'e9s sans tenir compte des relations 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs32 \cf2 Pour chaque entit\'e9 dans le diagramme UML, nous cr\'e9ons une table avec des champs correspondant \'e0 ses attributs. Chaque table doit avoir une cl\'e9 primaire, qui est soit un identifiant unique de l'entit\'e9 (attribut avec \{id\}), soit une combinaison d'attributs (tuple) qui garantit l'unicit\'e9 (l\'92entit\'e9 Inscription : \cf3 ann\'e9e 
+\f1\fs29\fsmilli14667 \cb4 ; date ; numEtud ; numFormation \cf5 \cb1 ) 
+\fs24 \cf2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs37\fsmilli18667 \cf2 Q1.2 Identification des relations affectant les cl\'e9s primaires 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs32 \cf2 Certaines relations dans le diagramme UML sont des associations qui impliquent des cl\'e9s \'e9trang\'e8res dans les tables, et d'autres peuvent cr\'e9er de nouvelles tables interm\'e9diaires pour repr\'e9senter des associations plusieurs-\'e0-plusieurs. Ces relations vont modifier les cl\'e9s primaires soit en ajoutant des cl\'e9s \'e9trang\'e8res, soit en formant de nouvelles cl\'e9s primaires compos\'e9es autrement dit des tuple composer d\'92ancienne cl\'e9 primaire et cl\'e9 \'e9trang\'e8re, qui repr\'e9sente la nouvelle cl\'e9 primaire (mod\'e9lisation de composition). 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs37\fsmilli18667 \cf2 Q1.3 et Q1.4 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs32 \cf2 Voir le diagramme du model\'e9 relationnel 
+\f2\b0 ; la seul instance ou j\'92ai eux a faire un choix est lors de la translation des entit\'e9 \'e9tudiant\'97inscription\'97pr\'e9requis, pour le choix de la cl\'e9 primaire de l\'92entit\'e9 Inscription que relie les deux autre j\'92ai choisit d\'92utiliser un tuple composez des quatre attributs ainsi un \'e9tudiant peut s\'92inscrire a une formation en un ann\'e9e \'e0 une date sp\'e9cifique (aucune chance de doublant) ce qui nous \'e9vite de cr\'e9er un nouvel attribut ID_inscription, pour le reste j\'92ai simplement appliquer le plus judicieusement les r\'e8gles de translation vu pendant le cour et TD. 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs37\fsmilli18667 \cf2 Exercice 2 
+\f1\b0\fs24 \
+
+\f0\b\fs37\fsmilli18667 Q2.1 : 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs32 \cf2 Afin d\'92\'e9viter le r\'e9p\'e9tions des attributs dans les entit\'e9s : \'e9tudiant, enseignant, r\'e9f\'e8rent, on peut avoir une entit\'e9 Personne avec les attribut : IdPersonne, nom,prenom, telPerso; et les nouvelles entit\'e9 \'e9tudiant, enseignant, r\'e9f\'e8rent n\'92auront que les attribut qui les diff\'e9rencie -ainsi qu\'92une cl\'e9 \'e9trang\'e8re vers l\'92entit\'e9 Personne. 
+\f1\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\b\fs37\fsmilli18667 \cf2 Q2.2 : 
+\f1\b0\fs24 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs32 \cf2 on aura une table comme \'e7a, apr\'e8s modification, les association de \'e9tudiant, enseignant, r\'e9f\'e8rent avec les autres entit\'e9 ne changeront pas (je n\'92ai pas eu le temps d\'92ajout\'e9 les modifications directement dans le mod\'e8le final) 
+\f1\fs24 \
+}
