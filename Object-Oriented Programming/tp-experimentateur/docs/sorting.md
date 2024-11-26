@@ -1,3 +1,0 @@
-# Sorting module
-
-::: src.sorting

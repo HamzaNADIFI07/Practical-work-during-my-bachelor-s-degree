@@ -1,3 +1,0 @@
-# Marker module
-
-::: src.marker
