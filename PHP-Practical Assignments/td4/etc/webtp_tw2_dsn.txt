@@ -1,0 +1,1 @@
+pgsql:host=webtp.fil.univ-lille.fr; dbname=tw2; user=hamza.nadifi.etu ;password=4Pt67cStZKMkHXRz6rm4WSWlbPkqzAjZ
